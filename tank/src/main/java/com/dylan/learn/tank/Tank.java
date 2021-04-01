@@ -1,6 +1,10 @@
 package com.dylan.learn.tank;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.Objects;
 
 /**
  * @author Dylan
@@ -14,21 +18,39 @@ public class Tank {
     private Dir dir = Dir.Down;
     private static final int SPEED = 50;
     private boolean moving = false;
+    private boolean boss = false;
     private TankFrame tankFrame;
-
+    BufferedImage image = null;
 
     public Tank(int x, int y, Dir dir, TankFrame tankFrame) {
         this.x = x;
         this.y = y;
         this.dir = dir;
         this.tankFrame = tankFrame;
+        try {
+            image = ImageIO.read(Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream("images/tank.png")));
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     public void paint(Graphics g){
-        Color c = g.getColor();
-        g.setColor(Color.WHITE);
-        g.fillRect(x, y, 50, 50);
-        g.setColor(c);
+        switch (dir){
+            case LEFT:
+                g.drawImage(ResourceManager.tankL, x, y, null);
+                break;
+            case Right:
+                g.drawImage(ResourceManager.tankR, x, y, null);
+                break;
+            case UP:
+                g.drawImage(ResourceManager.tankU, x, y, null);
+                break;
+            case Down:
+                g.drawImage(ResourceManager.tankD, x, y, null);
+                break;
+            default:
+                break;
+        }
         move();
     }
 
@@ -36,34 +58,21 @@ public class Tank {
         if (!moving) {
             return;
         }
+        if (boss){
+            return;
+        }
         switch (dir){
             case LEFT:
-                if (x - SPEED >= 0){
-                    x -= SPEED;
-                }else {
-                    x = 0;
-                }
+                x -= SPEED;
                 break;
             case Right:
-                if (x + SPEED <= 800){
-                    x += SPEED;
-                }else {
-                    x = 800 - 50;
-                }
+                x += SPEED;
                 break;
             case UP:
-                if (y - SPEED >= 20){
-                    y -= SPEED;
-                }else {
-                    y = 20;
-                }
+                y -= SPEED;
                 break;
             case Down:
-                if (y + SPEED <= 600){
-                    y += SPEED;
-                }else {
-                    y = 600 - 50;
-                }
+                y += SPEED;
                 break;
             default:
                 break;
@@ -79,8 +88,11 @@ public class Tank {
     }
 
     public void fire(){
-        tankFrame.bullets.add(new Bullet(this.x, this.y, this.dir, tankFrame));
+        tankFrame.bullets.add(new Bullet(this.x + 15, this.y + 15, this.dir, tankFrame));
 
     }
 
+    public void setBoss(boolean boss) {
+        this.boss = boss;
+    }
 }

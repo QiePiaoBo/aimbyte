@@ -22,6 +22,9 @@ public class TankFrame extends Frame {
     static int GAME_HEIGHT = 600;
 
     Tank myTank = new Tank(200, 200, Dir.Down, this);
+
+    Tank bossTank1 = new Tank(100, 100, Dir.Down, this);
+    Tank bossTank2 = new Tank(100, 50, Dir.Down, this);
     List<Bullet> bullets = new ArrayList<>();
     public TankFrame() throws HeadlessException {
         setSize(GAME_WIDTH, GAME_HEIGHT);
@@ -58,6 +61,10 @@ public class TankFrame extends Frame {
         // 每刷新一次页面就执行一次该方法，调用repaint()方法时也会触发该方法
         // System.out.println("paint");
         myTank.paint(g);
+        bossTank1.setBoss(true);
+        bossTank2.setBoss(true);
+        bossTank1.paint(g);
+        bossTank2.paint(g);
         for (int i = 0; i < bullets.size(); i ++){
             bullets.get(i).paint(g);
         }
