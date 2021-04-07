@@ -23,7 +23,7 @@ public class Tank {
     BufferedImage image = null;
     public int width = 50;
     public int height = 50;
-
+    private boolean living = true;
 
     public Tank(int x, int y, Dir dir, TankFrame tankFrame) {
         this.x = x;
@@ -38,6 +38,9 @@ public class Tank {
     }
 
     public void paint(Graphics g){
+        if (!living){
+            tankFrame.bosses.remove(this);
+        }
         switch (dir){
             case LEFT:
                 g.drawImage(ResourceManager.tankL, x, y, null);
@@ -99,5 +102,17 @@ public class Tank {
 
     public void setBoss(boolean boss) {
         this.boss = boss;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void die(){
+        this.living = false;
     }
 }

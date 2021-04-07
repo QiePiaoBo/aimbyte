@@ -58,12 +58,22 @@ public class TankFrame extends Frame {
     public void paint(Graphics g) {
         // 每刷新一次页面就执行一次该方法，调用repaint()方法时也会触发该方法
         // System.out.println("paint");
+        Color c = g.getColor();
+        g.setColor(Color.cyan);
+        g.drawString("子弹的数量：" + bullets.size(), 10, 60);
+        g.drawString("敌方坦克的数量：" + bosses.size(), 10, 80);
+        g.setColor(c);
         myTank.paint(g);
         for (int i = 0; i < bullets.size(); i ++){
             bullets.get(i).paint(g);
         }
         for (int i = 0; i < bosses.size(); i ++){
             bosses.get(i).paint(g);
+        }
+
+        for (int i=0; i< bullets.size(); i ++){
+            for (int j = 0; j < bosses.size(); j ++)
+                bullets.get(i).collideWith(bosses.get(j));
         }
     }
 
