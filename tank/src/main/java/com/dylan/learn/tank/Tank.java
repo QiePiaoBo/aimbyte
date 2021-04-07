@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Objects;
+import java.util.Random;
 
 /**
  * @author Dylan
@@ -16,19 +17,28 @@ public class Tank {
 
     private int x = 200, y = 200;
     private Dir dir = Dir.Down;
-    private static final int SPEED = 50;
-    private boolean moving = false;
+    private static final int SPEED = 1;
+    private boolean moving = true;
     private boolean boss = false;
+    // 持有画布引用
     private TankFrame tankFrame;
+    // 出示图片
     BufferedImage image = null;
+    // 宽度高度
     public int width = 50;
     public int height = 50;
+    // 是否存活
     private boolean living = true;
+    // 随机
+    private Random random = new Random();
+    // 区分敌我
+    Group group = Group.BAD;
 
-    public Tank(int x, int y, Dir dir, TankFrame tankFrame) {
+    public Tank(int x, int y, Dir dir,Group group, TankFrame tankFrame) {
         this.x = x;
         this.y = y;
         this.dir = dir;
+        this.group = group;
         this.tankFrame = tankFrame;
         try {
             image = ImageIO.read(Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream("images/tank.png")));
@@ -83,6 +93,8 @@ public class Tank {
             default:
                 break;
         }
+        if (random.nextInt(10) > 8)
+            this.fire();
     }
 
     public void setDir(Dir dir) {
@@ -96,7 +108,7 @@ public class Tank {
     public void fire(){
         int bX = this.x + this.width / 2 - Bullet.WIDTH / 2;
         int bY = this.y + this.height / 2 - Bullet.HEIGHT / 2;
-        tankFrame.bullets.add(new Bullet(bX, bY, this.dir, tankFrame));
+        tankFrame.bullets.add(new Bullet(bX, bY, this.dir, this.group, tankFrame));
 
     }
 

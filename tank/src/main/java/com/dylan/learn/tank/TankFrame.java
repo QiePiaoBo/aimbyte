@@ -21,7 +21,7 @@ public class TankFrame extends Frame {
     static int GAME_WIDTH = 800;
     static int GAME_HEIGHT = 600;
 
-    Tank myTank = new Tank(200, 400, Dir.Down, this);
+    Tank myTank = new Tank(200, 400, Dir.Down, Group.GOOD,this);
     List<Tank> bosses = new ArrayList<>();
     List<Bullet> bullets = new ArrayList<>();
     public TankFrame() throws HeadlessException {
