@@ -18,9 +18,9 @@ public class ResourceManager {
 
     static {
         try {
+            tankU = ImageIO.read((ResourceManager.class.getClassLoader().getResourceAsStream("images/tank.png")));
             tankL = ImageIO.read((ResourceManager.class.getClassLoader().getResourceAsStream("images/tank.png")));
             tankR = ImageIO.read((ResourceManager.class.getClassLoader().getResourceAsStream("images/tank.png")));
-            tankU = ImageIO.read((ResourceManager.class.getClassLoader().getResourceAsStream("images/tank.png")));
             tankD = ImageIO.read((ResourceManager.class.getClassLoader().getResourceAsStream("images/tank.png")));
 
             bulletL = ImageIO.read((ResourceManager.class.getClassLoader().getResourceAsStream("images/bullet.png")));

@@ -14,7 +14,7 @@ public class Bullet {
 
     private int x, y;
     private Dir dir;
-    private static int WIDTH = 20, HEIGHT = 20;
+    public static int WIDTH = 20, HEIGHT = 20;
     private TankFrame tankFrame;
     private boolean live = true;
 

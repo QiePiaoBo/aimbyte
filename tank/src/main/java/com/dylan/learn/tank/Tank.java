@@ -21,6 +21,9 @@ public class Tank {
     private boolean boss = false;
     private TankFrame tankFrame;
     BufferedImage image = null;
+    public int width = 50;
+    public int height = 50;
+
 
     public Tank(int x, int y, Dir dir, TankFrame tankFrame) {
         this.x = x;
@@ -88,7 +91,9 @@ public class Tank {
     }
 
     public void fire(){
-        tankFrame.bullets.add(new Bullet(this.x + 15, this.y + 15, this.dir, tankFrame));
+        int bX = this.x + this.width / 2 - Bullet.WIDTH / 2;
+        int bY = this.y + this.height / 2 - Bullet.HEIGHT / 2;
+        tankFrame.bullets.add(new Bullet(bX, bY, this.dir, tankFrame));
 
     }
 
