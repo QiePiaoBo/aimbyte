@@ -93,7 +93,7 @@ public class Tank {
             default:
                 break;
         }
-        if (random.nextInt(10) > 8)
+        if (this.group == Group.BAD && random.nextInt(10) > 8)
             this.fire();
     }
 
