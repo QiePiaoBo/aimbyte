@@ -1,0 +1,15 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: learn-mybatis
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://logicer.top:3306/ds_test?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&serverTimezone=UTC
+    username: root
+    password: 1997o4
+    type: com.alibaba.druid.pool.DruidDataSource
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
