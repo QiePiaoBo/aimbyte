@@ -11,5 +11,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
 
 
-mybatis:
+mybatis-plus:
   mapper-locations: classpath:mapper/*Mapper.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

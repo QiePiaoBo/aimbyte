@@ -2,6 +2,7 @@ package com.dylan.learnmybatis.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.dylan.learnmybatis.mapper.UserMapper;
+import com.dylan.learnmybatis.model.dto.UserDto;
 import com.dylan.learnmybatis.model.entity.UserEntity;
 import com.dylan.learnmybatis.model.vo.AimRes;
 import com.dylan.learnmybatis.model.vo.UserVo;
@@ -36,5 +37,10 @@ public class UserService {
 
     public AimRes getUserByName(String userName){
         return new AimRes("0000", "Ok", userMapper.getUserByName(userName));
+    }
+
+    public AimRes updateUserByUserDto(UserDto userDto){
+
+        return new AimRes("0000", "Ok", userMapper.updateUserByUserDto(userDto));
     }
 }

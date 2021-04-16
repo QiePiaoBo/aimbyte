@@ -26,21 +26,21 @@ public class UserController {
     UserService userService;
 
     @RequestMapping("add")
-    public AimRes addUser(@RequestBody UserDto userDto){
+    public AimRes addUser( UserDto userDto){
 
         return AimRes.success();
     }
 
     @RequestMapping("delete")
-    public AimRes deleteUser(@RequestBody UserDto userDto){
+    public AimRes deleteUser( UserDto userDto){
 
         return AimRes.success();
     }
 
     @RequestMapping("update")
-    public AimRes updateUser(@RequestBody UserDto userDto){
+    public AimRes updateUser( UserDto userDto){
 
-        return AimRes.success();
+        return userService.updateUserByUserDto(userDto);
     }
 
     @RequestMapping("search")

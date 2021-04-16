@@ -16,5 +16,27 @@
         select * from user where user_name = #{userName} ;
     </select>
 
+    <update id="updateUserByUserDto" parameterType="com.dylan.learnmybatis.model.dto.UserDto">
+        update user
+        <set>
+            <if test="userName == 'duanqilun'">
+                user_name = 'DuanQilun', user_age = 24,
+            </if>
+            <if test="userPhone != null">
+                user_phone = #{userPhone},
+            </if>
+            <if test="userAge != null">
+                user_age = #{userAge},
+            </if>
+            <if test="userDescription != null">
+                user_description = #{userDescription},
+            </if>
+        </set>
+        <where>
+            id = #{id}
+        </where>
+
+    </update>
+
 </mapper>
 
