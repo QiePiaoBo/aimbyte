@@ -39,7 +39,7 @@ public class UserController {
 
     @RequestMapping("update")
     public AimRes updateUser( UserDto userDto){
-
+        userDto.setUserDescription(null);
         return userService.updateUserByUserDto(userDto);
     }
 
