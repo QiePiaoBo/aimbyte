@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dylan.learnmybatis.mapper.UserMapper">
+
+    <resultMap type="com.dylan.learnmybatis.model.entity.UserEntity" id="UserMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="user_name" column="userName" jdbcType="VARCHAR"/>
+        <result property="user_age" column="userAge" jdbcType="INTEGER"/>
+        <result property="user_phone" column="userPhone" jdbcType="VARCHAR"/>
+        <result property="user_description" column="userDescription" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="getUsers" resultType="com.dylan.learnmybatis.model.vo.UserVo">
+        select * from user;
+    </select>
+    <select id="getUserByName" parameterType="java.lang.String" resultType="com.dylan.learnmybatis.model.vo.UserVo">
+        select * from user where user_name = #{userName} ;
+    </select>
+
+    <update id="updateUserByUserDto" parameterType="com.dylan.learnmybatis.model.dto.UserDto">
+        update user
+        <set>
+            <if test="userName == 'duanqilun'">
+                user_name = 'DuanQilun', user_age = 24,
+            </if>
+            <if test="userPhone != null">
+                user_phone = #{userPhone},
+            </if>
+            <if test="userAge != null">
+                user_age = #{userAge},
+            </if>
+            <if test="userDescription != null">
+                user_description = #{userDescription},
+            </if>
+        </set>
+        <where>
+            id = #{id}
+        </where>
+
+    </update>
+
+</mapper>
+
