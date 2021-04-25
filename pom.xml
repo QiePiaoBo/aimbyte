@@ -12,6 +12,7 @@
         <module>tank</module>
         <module>learnmybatis</module>
         <module>learnrpc</module>
+        <module>learnthread</module>
     </modules>
 
     <parent>
