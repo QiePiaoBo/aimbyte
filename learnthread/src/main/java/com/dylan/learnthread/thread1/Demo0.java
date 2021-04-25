@@ -6,7 +6,7 @@ import static javafx.scene.input.KeyCode.T;
 /**
  * @author Dylan
  * @Date : Created in 15:55 2021/4/25
- * @Description : 是否可以同时调用对象的synchronized和非synchronized方法
+ * @Description : 可以同时调用对象的synchronized和非synchronized方法
  * @Function :
  */
 public class Demo0 {

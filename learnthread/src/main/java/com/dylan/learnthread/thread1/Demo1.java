@@ -29,7 +29,9 @@ public class Demo1 {
 
     public static void main(String[] args) {
         Demo1 demo1 = new Demo1();
-        new Thread(()->{demo1.setMoney(10000);}, "set").start();
+        new Thread(()->{
+            demo1.setMoney(10000);
+            }, "set").start();
         new Thread(()->{
             System.out.println(demo1.getMoney());
         }, "get").start();
