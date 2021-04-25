@@ -143,8 +143,6 @@ public class MyRPCTest {
         header.setFlag(f);
         header.setDataLen(size);
         header.setRequestId(requestId);
-
-
         return header;
     }
 }
@@ -155,10 +153,9 @@ class ServerRequestHandler extends ChannelInboundHandlerAdapter{
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         ByteBuf buf = (ByteBuf) msg;
         ByteBuf sendBuf = buf.copy();
-
         System.out.println("channel start: " + buf.readableBytes());
-        if (buf.readableBytes() >= 110){
-            byte[] bytes = new byte[110];
+        if (buf.readableBytes() >= 106){
+            byte[] bytes = new byte[106];
             buf.readBytes(bytes);
             ByteArrayInputStream in = new ByteArrayInputStream(bytes);
             ObjectInputStream oin = new ObjectInputStream(in);
@@ -203,7 +200,6 @@ class ClientFactory{
     ConcurrentHashMap<InetSocketAddress, ClientPool> outBox = new ConcurrentHashMap<>();
 
     public NioSocketChannel getClient(InetSocketAddress address){
-
         ClientPool clientPool = outBox.get(address);
         if (clientPool == null){
             outBox.putIfAbsent(address, new ClientPool(poolSize));
@@ -247,18 +243,14 @@ class ClientFactory{
 
 class ResponseHandler{
     private static ConcurrentHashMap<Long, Runnable> mapping = new ConcurrentHashMap<>();
-
     public static void addCallBack(long requestId, Runnable cb){
         mapping.putIfAbsent(requestId, cb);
     }
-
     public static void runCallBack(long requestId){
-
         Runnable runnable = mapping.get(requestId);
         runnable.run();
         removeCB(requestId);
     }
-
     private static void removeCB(long requestId){
         mapping.remove(requestId);
     }
@@ -272,8 +264,8 @@ class ClientResponses extends ChannelInboundHandlerAdapter{
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         ByteBuf buf = (ByteBuf) msg;
-        if (buf.readableBytes() >= 110){
-            byte[] bytes = new byte[110];
+        if (buf.readableBytes() >= 106){
+            byte[] bytes = new byte[106];
             buf.readBytes(bytes);
             ByteArrayInputStream in = new ByteArrayInputStream(bytes);
             ObjectInputStream oin = new ObjectInputStream(in);

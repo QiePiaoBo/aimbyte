@@ -28,11 +28,11 @@ public class MyNetty {
 //            客户端模式
 //            clientModel();
 //            服务端模式
-//            serverMode();
+            serverMode();
 //            netty客户端模式
 //            nettyClient();
 //            Netty服务端模式
-            nettyServer();
+//            nettyServer();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -53,7 +53,7 @@ public class MyNetty {
         ChannelPipeline p = client.pipeline();
         p.addLast(new MyClientHandler());
 
-        ChannelFuture connect = client.connect(new InetSocketAddress("192.168.105.53", 9090));
+        ChannelFuture connect = client.connect(new InetSocketAddress("192.168.111.111", 9090));
         ChannelFuture sync = connect.sync();
 
         ByteBuf byteBuf = Unpooled.copiedBuffer("Hello world".getBytes(StandardCharsets.UTF_8));
@@ -81,7 +81,7 @@ public class MyNetty {
         // 在server的pipeline中添加接收连接的handler
         p.addLast(new MyAcceptHandler(thread, new ChannelInitHandler()));
         // 绑定端口，准备好接收连接
-        ChannelFuture bind = server.bind(new InetSocketAddress("192.168.0.110", 9090));
+        ChannelFuture bind = server.bind(new InetSocketAddress("192.168.71.110", 9090));
         bind.sync().channel().closeFuture().sync();
         System.out.println("server closed.");
     }
@@ -233,7 +233,6 @@ class ChannelInitHandler extends ChannelInboundHandlerAdapter {
  * 用户自定义handler
  * 这个handler应该是用户自己来实现的，不应该强行复用到pipeline中，但是可以用一个公共的桥梁将自己添加
  */
-//@ChannelHandler.Sharable
 class MyClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
@@ -250,11 +249,8 @@ class MyClientHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         ByteBuf byteBuf = (ByteBuf) msg;
         CharSequence str = byteBuf.getCharSequence(0, byteBuf.readableBytes(), StandardCharsets.UTF_8);
-
         ctx.writeAndFlush(byteBuf);
         System.out.println(str);
-
-
     }
 }
 
