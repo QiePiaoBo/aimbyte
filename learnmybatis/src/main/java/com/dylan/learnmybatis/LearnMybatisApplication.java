@@ -1,8 +1,9 @@
 package com.dylan.learnmybatis;
 
-import org.mybatis.spring.annotation.MapperScan;
+import com.dylan.learnmybatis.controller.UserController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 /**
  * @author Dylan
@@ -11,13 +12,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Function :
  */
 @SpringBootApplication
-@MapperScan
 public class LearnMybatisApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(LearnMybatisApplication.class, args);
         System.out.println("LearnMybatisApplication started.");
     }
-
-
 }

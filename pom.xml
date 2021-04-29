@@ -40,9 +40,5 @@
         </dependencies>
     </dependencyManagement>
     <profiles>
-<!--        <profile>-->
-<!--            <build>-->
-<!--            </build>-->
-<!--        </profile>-->
     </profiles>
 </project>

@@ -54,4 +54,8 @@ public class UserController {
         return userService.getUserByName(userName);
     }
 
+    public String getString(){
+        return "asd";
+    }
+
 }
