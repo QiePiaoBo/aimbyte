@@ -13,6 +13,7 @@
         <module>learnmybatis</module>
         <module>learnrpc</module>
         <module>learnthread</module>
+        <module>learnbasic</module>
     </modules>
 
     <parent>
