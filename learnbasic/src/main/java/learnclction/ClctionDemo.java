@@ -2,6 +2,7 @@ package learnclction;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 
 /**
  * @author Dylan
@@ -9,7 +10,7 @@ import java.util.Collection;
  * @Description :
  * @Function :
  */
-public class AryListDemo {
+public class ClctionDemo {
 
     public static void main(String[] args) {
         Collection<Integer> col0 = new ArrayList();
@@ -21,6 +22,11 @@ public class AryListDemo {
         col0.addAll(son0);
         System.out.println("add/addAll : " + col0);
         System.out.println("size : " + col0.size());
+
+        Iterator<Integer> iterator = col0.iterator();
+        while (iterator.hasNext()){
+                System.out.println("Iterator : " + iterator.next());
+        }
 
         System.out.println("col0 contains : " + col0.contains(2));
 
