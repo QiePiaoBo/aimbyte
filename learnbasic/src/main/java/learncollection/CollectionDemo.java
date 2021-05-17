@@ -1,4 +1,4 @@
-package learnclction;
+package learncollection;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -10,7 +10,7 @@ import java.util.Iterator;
  * @Description :
  * @Function :
  */
-public class ClctionDemo {
+public class CollectionDemo {
 
     public static void main(String[] args) {
         Collection<Integer> col0 = new ArrayList();

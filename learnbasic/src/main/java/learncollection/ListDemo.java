@@ -1,4 +1,4 @@
-package learnclction;
+package learncollection;
 
 import java.util.ArrayList;
 import java.util.Iterator;
