@@ -1,9 +1,7 @@
-package learncollection.generic;
+package com.dylan.learnbasic.learncollection.generic;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Vector;
 
 /**
  * @author Dylan

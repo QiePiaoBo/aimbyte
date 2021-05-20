@@ -1,4 +1,4 @@
-package learncollection.generic;
+package com.dylan.learnbasic.learncollection.generic;
 
 /**
  * @author Dylan

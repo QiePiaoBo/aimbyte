@@ -1,4 +1,4 @@
-package learncollection.generic;
+package com.dylan.learnbasic.learncollection.generic;
 
 /**
  * @author Dylan
@@ -6,6 +6,6 @@ package learncollection.generic;
  * @Description :
  * @Function :
  */
-public class Student extends Person{
+public class Worker extends Person{
 
 }

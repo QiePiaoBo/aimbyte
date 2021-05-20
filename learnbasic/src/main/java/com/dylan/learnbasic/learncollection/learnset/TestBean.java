@@ -1,4 +1,4 @@
-package learncollection.learnset;
+package com.dylan.learnbasic.learncollection.learnset;
 
 import java.util.HashSet;
 import java.util.Objects;

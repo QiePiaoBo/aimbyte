@@ -1,7 +1,6 @@
-package learncollection;
+package com.dylan.learnbasic.learncollection;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.ListIterator;
 
 /**

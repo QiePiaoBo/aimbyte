@@ -1,4 +1,4 @@
-package learncollection.lkdlist;
+package com.dylan.learnbasic.learncollection.lkdlist;
 
 /**
  * @author Dylan

@@ -1,8 +1,7 @@
-package learncollection.lkdlist;
+package com.dylan.learnbasic.learncollection.lkdlist;
 
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 
 /**
  * @author Dylan
