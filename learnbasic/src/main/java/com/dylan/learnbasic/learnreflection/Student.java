@@ -1,5 +1,7 @@
 package com.dylan.learnbasic.learnreflection;
 
+import java.io.IOException;
+
 /**
  * @author Dylan
  * @Date : Created in 13:31 2021/5/20
@@ -58,7 +60,7 @@ public class Student extends Person implements MyInterface {
 
     @Override
     @MyAnnotation("HelloMyMethod")
-    public void myMethod() {
+    public void myMethod() throws IOException {
         System.out.println("我重写了myMethod方法");
     }
 
