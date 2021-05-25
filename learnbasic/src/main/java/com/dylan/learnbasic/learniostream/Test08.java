@@ -26,9 +26,7 @@ public class Test08 {
             System.out.println(n);
             fot.write(buffer);
         }
-
         fot.close();
         fin.close();
-
     }
 }
