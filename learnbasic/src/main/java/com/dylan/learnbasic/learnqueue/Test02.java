@@ -21,11 +21,11 @@ public class Test02 {
         arr.offer("OFFER1");
         arr.offer("OFFER1");
         Thread.sleep(2000);
-        // 获取元素，获取第一个元素并从队列中取出，take是阻塞的
+        // 获取元素，获取第一个元素并从队列中取出，take在队列为空时阻塞
         System.out.println(arr.take());
-        // ArrayBlocking特有的，得到头部元素但是不将其移除
+        // ArrayBlocking特有的，得到头部元素但是不将其移除，队列空时返回值为null
         System.out.println(arr.peek());
-        // 获取头元素并将其从队列中移除
+        // 获取头元素并将其从队列中移除，队列空时返回值为null
         System.out.println(arr.poll());
         // 获取头元素并将其从队列中移除，可以设置超时时间
         System.out.println(arr.poll(2, TimeUnit.SECONDS));
