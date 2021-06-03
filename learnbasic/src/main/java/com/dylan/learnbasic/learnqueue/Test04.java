@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 public class Test04 {
 
     public static void main(String[] args) throws InterruptedException {
-        SynchronousQueue sq = new SynchronousQueue();
+        SynchronousQueue<String> sq = new SynchronousQueue<>();
         // 无法添加元素，因为容量是0
         // sq.add("a");
         // put方法会直接在添加元素时阻塞
@@ -41,9 +41,13 @@ public class Test04 {
         // 创建一个线程放数据
         new Thread(()->{
             try {
+                Thread.sleep(2000);
                 sq.put("a");
+                Thread.sleep(2000);
                 sq.put("b");
+                Thread.sleep(2000);
                 sq.put("c");
+                Thread.sleep(2000);
                 sq.put("d");
             } catch (InterruptedException e) {
                 e.printStackTrace();
