@@ -1,7 +1,7 @@
 package com.dylan.learnspring.controller;
 
-import com.dylan.learnspring.service.test.ApplicationContextAwareTest;
-import com.dylan.learnspring.service.test.BeanNameAwareTest;
+import com.dylan.learnspring.service.aware.ApplicationContextAwareTest;
+import com.dylan.learnspring.service.aware.BeanNameAwareTest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

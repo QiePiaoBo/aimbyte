@@ -1,4 +1,4 @@
-package com.dylan.learnspring.service.test;
+package com.dylan.learnspring.service.strategy;
 
 import org.springframework.stereotype.Service;
 

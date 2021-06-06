@@ -1,10 +1,9 @@
-package com.dylan.learnspring.service.test;
+package com.dylan.learnspring.service.aware;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 /**
  * @author Dylan

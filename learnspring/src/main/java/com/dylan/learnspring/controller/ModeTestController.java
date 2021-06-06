@@ -1,7 +1,7 @@
 package com.dylan.learnspring.controller;
 
-import com.dylan.learnspring.service.test.LSpringRequest;
-import com.dylan.learnspring.service.test.StrategyService;
+import com.dylan.learnspring.service.strategy.LSpringRequest;
+import com.dylan.learnspring.service.strategy.StrategyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

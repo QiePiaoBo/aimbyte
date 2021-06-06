@@ -1,4 +1,4 @@
-package com.dylan.learnspring.service.test;
+package com.dylan.learnspring.service.strategy;
 
 
 public class MoneySender implements PrizeSender {

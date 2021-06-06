@@ -15,3 +15,19 @@ mybatis-plus:
   mapper-locations: classpath:mapper/*Mapper.xml
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#  redis:
+#    cluster:
+#      nodes:
+#        - 172.17.93.153:7000
+#        - 172.17.93.153:7001
+#        - 172.17.93.153:7002
+#        - 172.17.93.153:7003
+#        - 172.17.93.153:7004
+#        - 172.17.93.153:7005
+#      max-redirects: 3
+#    lettuce:
+#      pool:
+#        max-idle: 16
+#        min-idle: 8
+#        max-active: 32
