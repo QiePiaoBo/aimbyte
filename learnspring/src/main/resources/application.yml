@@ -31,3 +31,8 @@ mybatis-plus:
 #        max-idle: 16
 #        min-idle: 8
 #        max-active: 32
+testyml:
+  yamlMap:
+    name: Dylan
+    age: 24
+    gender: man
