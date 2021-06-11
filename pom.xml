@@ -15,7 +15,7 @@
         <module>learnthread</module>
         <module>learnbasic</module>
         <module>learnalgorithm</module>
-        <module>learnsynccode</module>
+        <module>learnreactive</module>
     </modules>
 
     <parent>
