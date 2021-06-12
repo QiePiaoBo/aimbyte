@@ -19,17 +19,13 @@ public class RXJavaTest01 {
 
     public static void main(String[] args) {
 
-        Observable<String> girl = Observable.create(new ObservableOnSubscribe<String>() {
-            @Override
-            public void subscribe(@NonNull ObservableEmitter<String> observableEmitter) throws Exception {
-                observableEmitter.onNext("A");
-                Thread.sleep(1000);
-                observableEmitter.onNext("A");
-                observableEmitter.onNext("A");
-                observableEmitter.onNext("A");
-                observableEmitter.onError(new Exception("AAA"));
-                observableEmitter.onComplete();
-            }
+        Observable<String> girl = Observable.create(observableEmitter -> {
+            observableEmitter.onNext("起床");
+            observableEmitter.onNext("洗澡");
+            observableEmitter.onNext("化妆");
+            observableEmitter.onNext("出门");
+            observableEmitter.onError(new Exception("晚上酒店805见。"));
+            observableEmitter.onComplete();
         });
 
         Observer<String> man = new Observer<String>() {
@@ -40,12 +36,23 @@ public class RXJavaTest01 {
 
             @Override
             public void onNext(@NonNull String s) {
-                System.out.println("onNext " + s);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("监控报告: ");
+                System.out.println("目标正在" + s);
             }
 
             @Override
             public void onError(@NonNull Throwable throwable) {
-                System.out.println("onError " + throwable);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("卧槽，她说" + throwable.getMessage());
             }
 
             @Override

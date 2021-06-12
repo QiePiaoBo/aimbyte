@@ -1,4 +1,4 @@
-package com.dylan.learnthread.prodcons;
+package com.dylan.learnthread.util;
 
 /**
  * @author Dylan

@@ -1,6 +1,6 @@
 package com.dylan.learnthread.thread1;
 
-import com.dylan.learnthread.prodcons.SleepUtil;
+import com.dylan.learnthread.util.SleepUtil;
 
 import java.util.ArrayList;
 import java.util.List;
