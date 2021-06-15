@@ -1,6 +1,7 @@
-package com.dylan.learnsynccode;
+package com.dylan.learnsynccode.handler;
 
 
+import com.dylan.learnsynccode.pojo.Person;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.BodyInserters;
@@ -36,7 +37,6 @@ public class FluxHandler {
      */
     public Mono<ServerResponse> getJsonXXX(ServerRequest request){
         Person person = new Person("Dylan", 24, 1);
-
         return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(BodyInserters.fromValue(person));
     }
 
@@ -48,7 +48,6 @@ public class FluxHandler {
     public Mono<ServerResponse> getParams(ServerRequest request){
         Optional<String> paramId = request.queryParam("id");
         System.out.println("id: " + paramId);
-
         return ServerResponse.ok().contentType(MediaType.TEXT_PLAIN).body(BodyInserters.fromValue("ok"));
     }
 

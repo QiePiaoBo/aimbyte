@@ -1,5 +1,6 @@
-package com.dylan.learnsynccode;
+package com.dylan.learnsynccode.router;
 
+import com.dylan.learnsynccode.handler.FluxHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;

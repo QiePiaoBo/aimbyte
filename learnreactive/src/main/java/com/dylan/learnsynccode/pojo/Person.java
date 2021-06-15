@@ -1,4 +1,4 @@
-package com.dylan.learnsynccode;
+package com.dylan.learnsynccode.pojo;
 
 /**
  * @author Dylan

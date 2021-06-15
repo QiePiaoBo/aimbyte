@@ -1,2 +1,13 @@
 server:
   port: 9887
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: w1
+          predicates:
+            - Path=/w/**
+            - Weight=group1, 5
+          uri: lb://MDB
+          filters:
+            - StripPrefix=1
