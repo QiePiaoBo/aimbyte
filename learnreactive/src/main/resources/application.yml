@@ -11,6 +11,11 @@ spring:
           uri: lb://MDB5
           filters:
             - StripPrefix=1
+            - name: RequestRateLimiter
+              args:
+                - key-resolver: '#{@userKeyResolver}'
+                - redis-rate-limiter.replenishRate: 1
+                - redis-rate-limiter.burstCapacity: 3
         - id: w2
           predicates:
             - Path=/w/**
@@ -18,3 +23,6 @@ spring:
           uri: lb://MDB95
           filters:
             - StripPrefix=1
+  redis:
+    host: 192.168.110.110
+    port: 6379
