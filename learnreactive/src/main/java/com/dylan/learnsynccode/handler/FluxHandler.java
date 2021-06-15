@@ -9,6 +9,7 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
+import javax.print.attribute.standard.Media;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -47,8 +48,20 @@ public class FluxHandler {
      */
     public Mono<ServerResponse> getParams(ServerRequest request){
         Optional<String> paramId = request.queryParam("id");
+        Mono<ServerResponse> result = Mono.create(sink->{
+            sink.success(ServerResponse.ok().contentType(MediaType.TEXT_PLAIN).body(BodyInserters.fromValue(computeReturnString())).block());
+        });
         System.out.println("id: " + paramId);
-        return ServerResponse.ok().contentType(MediaType.TEXT_PLAIN).body(BodyInserters.fromValue("ok"));
+        return result;
+    }
+
+    private String computeReturnString() {
+        try {
+            Thread.sleep(2000);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+        return "Hello world after 2s.";
     }
 
     /**

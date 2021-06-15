@@ -16,23 +16,24 @@ public class TestController {
 
 
     @RequestMapping("1")
-    public Mono<String> getMonoString(){
+    public Mono<String> getMonoString(String name){
 
         System.out.println("---step1---");
         Mono<String> res = Mono.create(sink->{
-            sink.success(prepareData());
+            sink.success(prepareData(name));
         });
         System.out.println("---step2---");
+        System.out.println(name);
 
         return res;
     }
 
-    public String prepareData(){
+    public String prepareData(String name){
         try {
             Thread.sleep(2000);
         }catch (Exception e){
             e.printStackTrace();
         }
-        return "Hello world";
+        return "Hello " + name + ".";
     }
 }

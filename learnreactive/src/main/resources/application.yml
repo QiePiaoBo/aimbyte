@@ -8,6 +8,13 @@ spring:
           predicates:
             - Path=/w/**
             - Weight=group1, 5
-          uri: lb://MDB
+          uri: lb://MDB5
+          filters:
+            - StripPrefix=1
+        - id: w2
+          predicates:
+            - Path=/w/**
+            - Weight=group1, 95
+          uri: lb://MDB95
           filters:
             - StripPrefix=1
