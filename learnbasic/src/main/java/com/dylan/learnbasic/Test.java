@@ -1,5 +1,6 @@
 package com.dylan.learnbasic;
 
+import java.io.File;
 import java.util.*;
 
 /**
@@ -24,5 +25,9 @@ public class Test {
         testMap.put("b", "B");
         testMap.put("c", "C");
         System.out.println(testMap.toString());
+
+
+        File file = new File("F:\\_TestDir");
+        System.out.println(file.exists());
     }
 }

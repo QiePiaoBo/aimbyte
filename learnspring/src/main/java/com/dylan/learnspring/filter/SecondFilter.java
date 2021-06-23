@@ -19,8 +19,7 @@ import java.io.IOException;
  * @Function :
  */
 @Order(2)
-@WebFilter(urlPatterns = {"/**"}, filterName = "secondFilter")
-@Component
+@WebFilter(urlPatterns = {"/**"}, filterName = "filter2")
 public class SecondFilter implements Filter {
     private static final Logger logger = LoggerFactory.getLogger(SecondFilter.class);
 
