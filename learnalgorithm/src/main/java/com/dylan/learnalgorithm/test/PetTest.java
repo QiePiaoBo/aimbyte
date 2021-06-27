@@ -1,4 +1,4 @@
-package com.dylan.learnalgorithm.test1;
+package com.dylan.learnalgorithm.test;
 
 /**
  * @author Dylan
