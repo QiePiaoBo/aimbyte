@@ -22,10 +22,19 @@ public class Q01_PrintB {
         int num = 487512992;
         print(num);
 
-        System.out.println("");
+        System.out.println();
         int zero = 0;
         print(~zero + 1);
 
+        System.out.println();
+        int max = Integer.MAX_VALUE;
+        System.out.println(~max + 1);
+        print(~max + 1);
+
+        System.out.println();
+        int min = Integer.MIN_VALUE;
+        System.out.println(~min + 1);
+        print(~min + 1);
     }
 
 
