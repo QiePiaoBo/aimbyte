@@ -6,7 +6,7 @@ package com.dylan.learnalgorithm.xinshou;
  * @Description : 选择、冒泡排序
  * @Function :
  */
-public class Q02_SelectionSort {
+public class Q02_Sort {
     /**
      * 交换位置
      * @param arr
@@ -104,7 +104,4 @@ public class Q02_SelectionSort {
         insertSort(arr);
         printArray(arr);
     }
-
-
-
 }
