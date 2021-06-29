@@ -11,7 +11,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
  * @Function :
  */
 @SpringBootApplication
-@ServletComponentScan(basePackages = "com.dylan.learnspring.filter")
+@ServletComponentScan
 public class LearnSpringApplication {
 
     public static void main(String[] args) {
