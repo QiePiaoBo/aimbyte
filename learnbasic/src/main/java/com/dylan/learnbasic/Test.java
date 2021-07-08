@@ -11,9 +11,6 @@ import java.util.*;
  */
 public class Test {
 
-    public static void main(String[] args) {
-        testMap();
-    }
     public static void testMap(){
         String s = null;
         System.out.println("asd.asd".replaceAll("\\.", ""));
@@ -27,7 +24,19 @@ public class Test {
         System.out.println(testMap.toString());
 
 
-        File file = new File("F:\\_TestDir");
+        File file = new File("F:\\_TestDir/aaa");
         System.out.println(file.exists());
+        System.out.println(file.getParent());
+    }
+    public static void main(String[] args) {
+//        testMap();
+
+
+        String a1 = "a/g/";
+        System.out.println(a1.split("/")[1]);
+        a1 = a1.substring(a1.lastIndexOf("/") + 1);
+        System.out.println(a1);
+
+
     }
 }
