@@ -1,5 +1,7 @@
 package com.dylan.learnbasic;
 
+import com.alibaba.fastjson.JSONObject;
+
 import java.io.File;
 import java.util.*;
 
@@ -28,15 +30,23 @@ public class Test {
         System.out.println(file.exists());
         System.out.println(file.getParent());
     }
-    public static void main(String[] args) {
-//        testMap();
 
+    public static void testSplit(){
+        //        testMap();
 
         String a1 = "a/g/";
         System.out.println(a1.split("/")[1]);
         a1 = a1.substring(a1.lastIndexOf("/") + 1);
         System.out.println(a1);
+    }
 
+    public static void main(String[] args) {
+
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("a", "");
+
+
+        System.out.println("".equals(jsonObject.get("a").toString()));
 
     }
 }
