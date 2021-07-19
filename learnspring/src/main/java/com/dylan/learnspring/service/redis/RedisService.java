@@ -1,5 +1,6 @@
 package com.dylan.learnspring.service.redis;
 
+import com.dylan.learnspring.config.RedisCommonProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,7 @@ public class RedisService {
         redisTemplate.opsForValue().set(key, value.toString(), WEEK_SECONDS, TimeUnit.SECONDS);
     }
 
+
     /**
      * 将 key，value 存放到redis数据库中，设置过期时间单位是秒
      *
@@ -47,6 +49,7 @@ public class RedisService {
         redisTemplate.opsForValue().set(key, value.toString(), expireTime, TimeUnit.SECONDS);
     }
 
+
     /**
      * 设置超时时间
      * @param key
@@ -57,6 +60,7 @@ public class RedisService {
           Boolean flag = redisTemplate.expire(key, expire, TimeUnit.SECONDS);
           return flag;
     }
+
 
     /**
      * 判断 key 是否在 redis 数据库中
@@ -78,6 +82,7 @@ public class RedisService {
         return redisTemplate.opsForValue().get(key);
     }
 
+
     /**
      * 删除 key 对应的 value
      * @param key
@@ -85,6 +90,8 @@ public class RedisService {
     public void delete(String key) {
         redisTemplate.delete(key);
     }
+
+
     /**
      * 获取字符串为前缀的KEY列表
      * @param key
@@ -92,6 +99,8 @@ public class RedisService {
     public Set<String>  keys(String key) {
         return redisTemplate.keys(key);
     }
+
+
     /**
      * 递增
      *
@@ -106,6 +115,7 @@ public class RedisService {
         return redisTemplate.opsForValue().increment(key, delta);
     }
 
+
     /**
      * 递减
      *
@@ -119,6 +129,7 @@ public class RedisService {
         }
         return redisTemplate.opsForValue().increment(key, -delta);
     }
+
 
     /**
      * 创建锁  最简单方法
@@ -135,6 +146,7 @@ public class RedisService {
         return boo != null && boo;
     }
 
+
     /**
      * 根据key删除锁  最简单方法
      *
@@ -144,6 +156,7 @@ public class RedisService {
         // 删除key即可释放锁
         redisTemplate.delete(key);
     }
+
 
     /**
      * 尝试获取分布式锁
@@ -157,6 +170,7 @@ public class RedisService {
     public  boolean tryGetDistributedLock(String lockKey, String requestId, int expireTime) {
     	return lock(lockKey, requestId, (long) expireTime);
     }
+
 
     /**
      * 释放分布式锁
@@ -173,6 +187,7 @@ public class RedisService {
         }
     	return true;
     }
+
 
     /**
      * 获取唯一Id
@@ -196,5 +211,15 @@ public class RedisService {
             }
             return Long.valueOf(first + String.format("%16d", randNo));
         }
+    }
+
+    /**
+     * 发布消息
+     * @param message
+     * @return
+     */
+    public String doPublish(String message){
+        redisTemplate.convertAndSend(RedisCommonProperties.ChannelName, message);
+        return "publish ok";
     }
 }

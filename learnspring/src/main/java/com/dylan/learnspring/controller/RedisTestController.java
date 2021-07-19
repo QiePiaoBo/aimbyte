@@ -19,16 +19,22 @@ public class RedisTestController {
     private static final Logger logger = LoggerFactory.getLogger(RedisTestController.class);
 
     @Autowired
-    RedisService redisUtil;
+    RedisService redisService;
 
     @RequestMapping("setName")
     public boolean setName(String name){
-        redisUtil.set("name", name);
-        return redisUtil.exists("name");
+        redisService.set("name", name);
+        return redisService.exists("name");
     }
 
     @RequestMapping("getName")
     public String getName(){
-        return redisUtil.get("name");
+        return redisService.get("name");
     }
+
+    @RequestMapping("publish")
+    public String doPublish(String message){
+        return redisService.doPublish(message);
+    }
+
 }

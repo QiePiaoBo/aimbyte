@@ -15,6 +15,11 @@ spring:
     username: root
     password: 1997o4
     type: com.alibaba.druid.pool.DruidDataSource
+  redis:
+    host: sucifitz.top
+    database: 0
+    password: mylog
+    port: 6379
 
 
 mybatis-plus:
