@@ -22,13 +22,24 @@ import org.springframework.stereotype.Component;
 @Component
 public class RedisSubListener implements MessageListener {
 
+    /**
+     * 引入redisTemplate
+     */
     @Autowired(required = false)
     private StringRedisTemplate redisTemplate;
 
 
+    /**
+     * 日志工具
+     */
     Logger logger = LoggerFactory.getLogger(RedisSubListener.class);
 
 
+    /**
+     * 重写消息监听方法
+     * @param message
+     * @param bytes
+     */
     @Override
     public void onMessage(Message message, byte[] bytes) {
         String msgString = (String) redisTemplate.getValueSerializer().deserialize(message.getBody());
@@ -41,7 +52,7 @@ public class RedisSubListener implements MessageListener {
     }
 
     /**
-     * 订阅
+     * 消息监听器
      * @param factory
      * @param redisSubListener
      * @return
@@ -51,7 +62,6 @@ public class RedisSubListener implements MessageListener {
         RedisMessageListenerContainer container = new RedisMessageListenerContainer();
         container.setConnectionFactory(factory);
         container.addMessageListener(redisSubListener, new PatternTopic(RedisCommonProperties.ChannelName));
-
         return container;
     }
 
