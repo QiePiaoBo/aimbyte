@@ -16,6 +16,7 @@ public class LearnSpringApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(LearnSpringApplication.class, args);
+        // 打印一句话到控制台，标志着Springboot程序启动成功
         System.out.println("LearnSpringApplication started.");
     }
 }

@@ -1,8 +1,10 @@
 package com.dylan.learnbasic;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 import java.io.File;
+import java.io.PrintStream;
 import java.util.*;
 
 /**
@@ -40,13 +42,28 @@ public class Test {
         System.out.println(a1);
     }
 
-    public static void main(String[] args) {
+    public static void testJson(){
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("a", "");
 
 
         System.out.println("".equals(jsonObject.get("a").toString()));
+        PrintStream out = System.out;
+    }
 
+    public static void main(String[] args) {
+
+        JSONObject obj = new JSONObject();
+        JSONArray arr = new JSONArray();
+        arr.add("aaa");
+        arr.add("bbb");
+        obj.put("arr", arr);
+
+        JSONArray jsonArray = obj.getJSONArray("arr");
+        jsonArray.remove("aaa");
+        jsonArray.remove("bbb");
+
+        System.out.println(obj.toJSONString());
     }
 }

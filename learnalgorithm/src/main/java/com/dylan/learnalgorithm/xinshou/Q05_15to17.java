@@ -17,7 +17,7 @@ public class Q05_15to17 {
     }
 
     /**
-     * 0 1 等概率返回
+     * 0 1 等概率返回，使用f5，将其所有等概率的结果均分到0和1上，如果有多余的一个返回值则不进行返回
      * @return
      */
     public static int f01(){
@@ -28,24 +28,44 @@ public class Q05_15to17 {
         return ans < 3 ? 0 : 1;
     }
 
-    public static int f7(){
-        return 0;
+    /**
+     * 000-111即0-7等概率返回
+     */
+    public static int f000111(){
+        int ans = (f01() << 2) + (f01() << 1) + (f01() << 0);
+        return ans;
+    }
+
+    /**
+     * 0-6等概率返回
+     * @return
+     */
+    public static int f06(){
+        int ans = 0;
+        do {
+            ans = f000111();
+        }while (ans == 7);
+        return ans;
+    }
+
+
+    /**
+     * 1-7等概率返回
+     * @return
+     */
+    public static int f17(){
+        return f06() + 1;
     }
     public static void main(String[] args) {
 
         int testTime = 1000000;
-        int[] arr = new int[7];
-        int count = 0;
+        int[] counts = new int[9];
         for (int i = 0; i < testTime; i++) {
-            if (f01() == 0){
-                count ++;
-            }
-//            int res = f5();
-//            arr[res]  ++;
+            int res = f17();
+            counts[res]  ++;
         }
-//        for (int i = 0; i < arr.length; i++) {
-//            System.out.println(i + " : " + arr[i]);
-//        }
-        System.out.println((double) count / (double) testTime);
+        for (int i = 0; i < counts.length; i++) {
+            System.out.println(i + "出现的次数 : " + counts[i]);
+        }
     }
 }

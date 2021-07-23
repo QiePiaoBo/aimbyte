@@ -39,7 +39,7 @@ public class Q02_Sort {
         // 处理边界条件
         if (arr == null || arr.length < 2){
             return ;
-        }
+         }
         int N  = arr.length;
         for (int i = 0; i < N; i++) {
             // i - N-1 范围上做操作
@@ -72,6 +72,10 @@ public class Q02_Sort {
         }
     }
 
+    /**
+     * 插入排序
+     * @param arr
+     */
     public static void insertSort(int[] arr){
         // 处理边界条件
         if (arr == null || arr.length < 2){
@@ -92,7 +96,6 @@ public class Q02_Sort {
     }
 
 
-
     public static void main(String[] args) {
 
         int[] arr = {7, 1, 3, 5, 1, 6, 8, 1, 3, 5, 7, 5, 6};
@@ -100,8 +103,8 @@ public class Q02_Sort {
         printArray(arr);
 
         /*selectSort(arr);*/
-        /*bubbleSort(arr);*/
-        insertSort(arr);
+        bubbleSort(arr);
+        /*insertSort(arr);*/
         printArray(arr);
     }
 }
