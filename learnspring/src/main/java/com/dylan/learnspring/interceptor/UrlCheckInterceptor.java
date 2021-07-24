@@ -22,7 +22,7 @@ public class UrlCheckInterceptor implements HandlerInterceptor {
         logger.info("PreHandle.");
         String url = request.getRequestURL().toString().toLowerCase();
         // 如果路由中包含test，允许访问
-        if (url.contains("test")){
+        if (url.contains("test") || url.contains("user")){
             flag = true;
         }
         // 如果路由中端口后的部分长度为1，即访问路径为服务根路径，就允许访问

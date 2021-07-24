@@ -11,7 +11,7 @@
     <modules>
         <module>tank</module>
         <module>learnspring</module>
-        <module>learnrpc</module>
+        <module>learnnetty</module>
         <module>learnthread</module>
         <module>learnbasic</module>
         <module>learnalgorithm</module>
@@ -42,6 +42,4 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-    <profiles>
-    </profiles>
 </project>

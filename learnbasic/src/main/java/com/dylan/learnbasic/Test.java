@@ -1,11 +1,13 @@
 package com.dylan.learnbasic;
 
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 import java.io.File;
 import java.io.PrintStream;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.PrimitiveIterator;
+import java.util.stream.IntStream;
 
 /**
  * @author Dylan
@@ -15,7 +17,7 @@ import java.util.*;
  */
 public class Test {
 
-    public static void testMap(){
+    public static void testMap() {
         String s = null;
         System.out.println("asd.asd".replaceAll("\\.", ""));
 
@@ -33,7 +35,7 @@ public class Test {
         System.out.println(file.getParent());
     }
 
-    public static void testSplit(){
+    public static void testSplit() {
         //        testMap();
 
         String a1 = "a/g/";
@@ -42,28 +44,30 @@ public class Test {
         System.out.println(a1);
     }
 
-    public static void testJson(){
+    public static void testJson() {
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("a", "");
 
 
         System.out.println("".equals(jsonObject.get("a").toString()));
-        PrintStream out = System.out;
     }
 
     public static void main(String[] args) {
 
-        JSONObject obj = new JSONObject();
-        JSONArray arr = new JSONArray();
-        arr.add("aaa");
-        arr.add("bbb");
-        obj.put("arr", arr);
+        // 遍历字符串每个元素转化成数字后的值
+        String s = "aaa";
+        IntStream chars = s.codePoints();
+        PrimitiveIterator.OfInt iterator = chars.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.nextInt());
+        }
 
-        JSONArray jsonArray = obj.getJSONArray("arr");
-        jsonArray.remove("aaa");
-        jsonArray.remove("bbb");
-
-        System.out.println(obj.toJSONString());
+        // int数组转化为字符串
+        int[] ints = {97, 98, 999999999};
+        String s1 = new String(ints, 0, 3);
+        System.out.println(s1);
+        PrintStream out = System.out;
     }
+
 }

@@ -20,6 +20,9 @@ spring:
     database: 0
     password: mylog
     port: 6379
+  aop:
+    proxy-target-class: true
+
 
 
 mybatis-plus:
@@ -43,7 +46,7 @@ mybatis-plus:
 #        max-idle: 16
 #        min-idle: 8
 #        max-active: 32
-testyml:
+testyaml:
   yamlMap:
     name: Dylan
     age: 24

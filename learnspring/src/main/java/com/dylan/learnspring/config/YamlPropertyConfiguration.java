@@ -12,7 +12,7 @@ import java.util.Map;
  * @Function :
  */
 @Component
-@ConfigurationProperties(prefix = "testyml")
+@ConfigurationProperties(prefix = "testyaml")
 public class YamlPropertyConfiguration {
 
     private Map<String, String > yamlMap;
