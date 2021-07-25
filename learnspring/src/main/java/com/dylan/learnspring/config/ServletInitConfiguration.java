@@ -46,4 +46,5 @@ public class ServletInitConfiguration {
         bean.setLoadOnStartup(1);
         return bean;
     }
+
 }

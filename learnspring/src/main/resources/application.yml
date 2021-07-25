@@ -1,5 +1,5 @@
 server:
-  port: 9001
+  port: 10001
 #  ssl:
 #    key-store: classpath:keystore.p12
 #    key-store-password: dylanTest
@@ -21,7 +21,7 @@ spring:
     password: mylog
     port: 6379
   aop:
-    proxy-target-class: true
+    proxy-target-class: false
 
 
 
