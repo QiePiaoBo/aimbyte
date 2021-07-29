@@ -1,9 +1,14 @@
 package com.dylan.learnbasic;
 
+import cn.hutool.core.lang.Snowflake;
+import cn.hutool.core.util.IdUtil;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.parser.Feature;
 
-import java.io.File;
-import java.io.PrintStream;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.PrimitiveIterator;
@@ -38,23 +43,16 @@ public class Test {
     public static void testSplit() {
         //        testMap();
 
-        String a1 = "a/g/";
-        System.out.println(a1.split("/")[1]);
+        String a1 = "a/g/aaa.txt";
+        String a2 = "a/g/aaa.txt";
+//        System.out.println(a1.split("/")[1]);
         a1 = a1.substring(a1.lastIndexOf("/") + 1);
+        String a3 = a2.substring(0, a2.lastIndexOf("/") + 1);
         System.out.println(a1);
+        System.out.println(a3);
     }
 
-    public static void testJson() {
-
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("a", "");
-
-
-        System.out.println("".equals(jsonObject.get("a").toString()));
-    }
-
-    public static void main(String[] args) {
-
+    private static void testString(){
         // 遍历字符串每个元素转化成数字后的值
         String s = "aaa";
         IntStream chars = s.codePoints();
@@ -70,4 +68,38 @@ public class Test {
         PrintStream out = System.out;
     }
 
+    public static void testJson() throws IOException {
+
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("a", "");
+
+
+        System.out.println("".equals(jsonObject.get("a").toString()));
+
+        //        String path = "C:\\Users\\Dylan\\Desktop\\动态首页启动页.json";
+        String path = "C:\\Users\\Dylan\\Desktop\\jia.json";
+        File file = new File(path);
+        FileInputStream fis = new FileInputStream(file);
+        JSONObject json = JSON.parseObject(fis, StandardCharsets.UTF_8, JSONObject.class, Feature.OrderedField);
+        System.out.println(null == json);
+        JSONObject app01 = json.getJSONObject("app01");
+        System.out.println("app01 is : " + app01);
+        JSONArray startPages = app01.getJSONArray("startPages");
+        System.out.println("StartPages is : " + startPages);
+        JSONObject aim = startPages.getJSONObject(0);
+        System.out.println("JsonObject 01 is : " + aim);
+        Long id = aim.getLong("id");
+        System.out.println("id is : "+ id);
+    }
+
+
+    public static void main(String[] args) throws IOException {
+        Snowflake snowflake = IdUtil.createSnowflake(20, 1);
+
+        System.out.println(snowflake.nextId());
+        System.out.println(snowflake.nextId());
+        System.out.println(snowflake.nextId());
+
+
+    }
 }
