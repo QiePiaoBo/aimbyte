@@ -1,5 +1,7 @@
 package com.dylan.learnalgorithm.xinshou;
 
+import com.dylan.learnalgorithm.test.CommonTest;
+
 /**
  * @author Dylan
  * @Date : 2021/6/26 - 18:47
@@ -96,15 +98,83 @@ public class Q02_Sort {
     }
 
 
+    /**
+     * 拷贝数组
+     * @param arr
+     * @return
+     */
+    public static int[] copyArray(int[] arr){
+        int[] ans = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            ans[i] = arr[i];
+        }
+        return ans;
+    }
+
+    /**
+     * 验证两个数组完全相等
+     * @param arr1
+     * @param arr2
+     * @return
+     */
+    public static boolean equalValues(int[] arr1, int[] arr2){
+        if (arr1.length != arr2.length){
+            return false;
+        }
+        for (int i = 0; i < arr1.length; i++) {
+            if (arr1[i] != arr2[i]){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 测试数组是按顺序排列的 bigger为true表示从小到大
+     * @param arr
+     * @return
+     */
+    public static boolean arrSorted(int[] arr, boolean bigger){
+        if (arr.length < 2){
+            return true;
+        }
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i - 1] > arr[i] && bigger){
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+
     public static void main(String[] args) {
 
-        int[] arr = {7, 1, 3, 5, 1, 6, 8, 1, 3, 5, 7, 5, 6};
+        int maxLen = 50;
+        int maxValue = 1000;
+        int testTime = 10000;
 
-        printArray(arr);
-
-        /*selectSort(arr);*/
-        bubbleSort(arr);
-        /*insertSort(arr);*/
-        printArray(arr);
+        for (int i = 0; i < testTime; i++) {
+            int[] arr1 = CommonTest.lenRandomValueRandom(maxLen, maxValue);
+            int[] arr2 = copyArray(arr1);
+            selectSort(arr1);
+            insertSort(arr2);
+            if (!arrSorted(arr1, true)){
+                for (int j = 0; j < arr1.length; j++) {
+                    System.out.print(arr1[j] + " ");
+                }
+                System.out.println();
+                System.out.println("选择排序错了");
+                break;
+            }
+            if (!arrSorted(arr2, true)){
+                for (int j = 0; j < arr2.length; j++) {
+                    System.out.print(arr2[j] + " ");
+                }
+                System.out.println();
+                System.out.println("插入排序错了");
+                break;
+            }
+        }
     }
 }

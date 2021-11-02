@@ -16,6 +16,7 @@
         <module>learnbasic</module>
         <module>learnalgorithm</module>
         <module>learnreactive</module>
+        <module>learnspringboot</module>
     </modules>
 
     <parent>
