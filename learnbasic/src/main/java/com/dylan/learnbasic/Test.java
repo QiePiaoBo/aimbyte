@@ -43,13 +43,20 @@ public class Test {
     public static void testSplit() {
         //        testMap();
 
-        String a1 = "a/g/aaa.txt";
+        String a1 = "a/g/";
         String a2 = "a/g/aaa.txt";
-//        System.out.println(a1.split("/")[1]);
+        String[] split = a1.split("/");
+        System.out.println(split.length);
+        for (int i = 0; i < split.length; i++) {
+            System.out.println(split[i] + i);
+        }
         a1 = a1.substring(a1.lastIndexOf("/") + 1);
         String a3 = a2.substring(0, a2.lastIndexOf("/") + 1);
         System.out.println(a1);
         System.out.println(a3);
+
+        String a4 = "abcdef";
+        System.out.println(a4.substring(a4.lastIndexOf("c")));
     }
 
     private static void testString(){
@@ -93,13 +100,25 @@ public class Test {
     }
 
 
-    public static void main(String[] args) throws IOException {
+    public static void testSnowFlake(){
         Snowflake snowflake = IdUtil.createSnowflake(20, 1);
 
         System.out.println(snowflake.nextId());
         System.out.println(snowflake.nextId());
         System.out.println(snowflake.nextId());
 
+    }
 
+
+    public static void main(String[] args) throws IOException {
+        String path = "C:\\Users\\Dylan\\Desktop\\";
+        File desktopFile = new File(path);
+        if (desktopFile.exists()){
+            System.out.println("Exists.");
+        }else {
+            System.out.println("Not Exists.");
+        }
+
+        testSplit();
     }
 }
