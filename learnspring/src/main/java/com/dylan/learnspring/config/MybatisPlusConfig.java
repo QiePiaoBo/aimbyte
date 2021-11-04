@@ -18,6 +18,10 @@ import java.util.Properties;
 public class MybatisPlusConfig {
 
 
+    /**
+     * mybatis分页配置
+     * @return
+     */
     @Bean
     public PaginationInterceptor paginationInterceptor(){
         PaginationInterceptor paginationInterceptor = new PaginationInterceptor();

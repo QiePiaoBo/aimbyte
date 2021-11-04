@@ -23,13 +23,18 @@ public class UrlCheckInterceptor implements HandlerInterceptor {
         String url = request.getRequestURL().toString().toLowerCase();
         // 如果路由中包含test，允许访问
         // 拦截器开放error页面的请求权限
-        if (url.contains("test") || url.contains("error")){
+        if (url.contains("test") || url.contains("error") || url.contains("druid")){
+            logger.info(url + " passed.");
             flag = true;
         }
         // 如果路由中端口后的部分长度为1，即访问路径为服务根路径，就允许访问
         String subUrl = url.substring(url.indexOf("/"));
         if (subUrl.length() < 2){
+            logger.info(url + " passed.");
             flag = true;
+        }
+        if (!flag){
+            logger.info(url + " forbidden.");
         }
         return flag;
     }
