@@ -1,6 +1,6 @@
 package com.dylan.learnalgorithm.xinshou;
 
-import com.dylan.learnalgorithm.test.CommonTest;
+//import com.dylan.learnalgorithm.test.CommonTest;
 
 /**
  * @author Dylan
@@ -148,33 +148,33 @@ public class Q02_Sort {
 
 
 
-    public static void main(String[] args) {
-
-        int maxLen = 50;
-        int maxValue = 1000;
-        int testTime = 10000;
-
-        for (int i = 0; i < testTime; i++) {
-            int[] arr1 = CommonTest.lenRandomValueRandom(maxLen, maxValue);
-            int[] arr2 = copyArray(arr1);
-            selectSort(arr1);
-            insertSort(arr2);
-            if (!arrSorted(arr1, true)){
-                for (int j = 0; j < arr1.length; j++) {
-                    System.out.print(arr1[j] + " ");
-                }
-                System.out.println();
-                System.out.println("选择排序错了");
-                break;
-            }
-            if (!arrSorted(arr2, true)){
-                for (int j = 0; j < arr2.length; j++) {
-                    System.out.print(arr2[j] + " ");
-                }
-                System.out.println();
-                System.out.println("插入排序错了");
-                break;
-            }
-        }
-    }
+//    public static void main(String[] args) {
+//
+//        int maxLen = 50;
+//        int maxValue = 1000;
+//        int testTime = 10000;
+//
+//        for (int i = 0; i < testTime; i++) {
+//            int[] arr1 = CommonTest.lenRandomValueRandom(maxLen, maxValue);
+//            int[] arr2 = copyArray(arr1);
+//            selectSort(arr1);
+//            insertSort(arr2);
+//            if (!arrSorted(arr1, true)){
+//                for (int j = 0; j < arr1.length; j++) {
+//                    System.out.print(arr1[j] + " ");
+//                }
+//                System.out.println();
+//                System.out.println("选择排序错了");
+//                break;
+//            }
+//            if (!arrSorted(arr2, true)){
+//                for (int j = 0; j < arr2.length; j++) {
+//                    System.out.print(arr2[j] + " ");
+//                }
+//                System.out.println();
+//                System.out.println("插入排序错了");
+//                break;
+//            }
+//        }
+//    }
 }

@@ -41,7 +41,8 @@ public class Q08_halfDivide4LessMemberIndex {
         // 普遍情况
         int left = 0;
         int right = length - 1;
-        while (left <= right) {
+        // 保证left和right之间有数，避免 mid - 1 < 0 或 mid + 1 > length -1
+        while (left < right - 1) {
             int mid = (left + right) / 2;
             if (arr[mid] < arr[mid + 1]) {
                 if (arr[mid] < arr[mid - 1])
@@ -52,7 +53,7 @@ public class Q08_halfDivide4LessMemberIndex {
                 left = mid + 1;
             }
         }
-        return ans;
+        return arr[left] < arr[right] ? left : right;
     }
 
     /**
