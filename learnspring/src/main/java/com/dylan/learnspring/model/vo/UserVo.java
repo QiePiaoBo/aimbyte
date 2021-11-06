@@ -1,12 +1,14 @@
 package com.dylan.learnspring.model.vo;
 
+import java.io.Serializable;
+
 /**
  * @author Dylan
  * @Date : Created in 14:06 2021/4/14
  * @Description :
  * @Function :
  */
-public class UserVo {
+public class UserVo implements Serializable {
 
 
     private Integer id;

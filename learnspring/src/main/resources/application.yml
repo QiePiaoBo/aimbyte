@@ -15,11 +15,14 @@ spring:
     username: root
     password: 1997o4
     type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      max-active: 20
   redis:
-    host: sucifitz.top
+    host: 8.131.90.159
     database: 0
     password: mylog
     port: 6379
+    timeout: 0
   aop:
     proxy-target-class: false
 

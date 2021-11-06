@@ -4,14 +4,19 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.DefaultBaseTypeLimitingValidator;
+import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.*;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+
+import java.lang.reflect.Method;
 
 /**
  * @author Dylan
@@ -22,6 +27,33 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @Configuration
 @EnableCaching
 public class RedisConfiguration extends CachingConfigurerSupport {
+
+    @Bean
+    public CacheManager myCacheManager(RedisConnectionFactory redisConnectionFactory){
+        RedisCacheManager cacheManager = RedisCacheManager.create(redisConnectionFactory);
+
+        return cacheManager;
+    }
+
+    @Bean
+    public KeyGenerator myKeyGenerator(){
+        KeyGenerator keyGenerator = new KeyGenerator() {
+            @Override
+            public Object generate(Object target, Method method, Object... params) {
+                StringBuilder stringBuilder = new StringBuilder();
+                if (params.length > 0){
+                    for (int i = 0; i < params.length; i++) {
+                        stringBuilder.append(params[i].toString());
+                        stringBuilder.append("_");
+                    }
+                    stringBuilder.deleteCharAt(stringBuilder.lastIndexOf("_"));
+                }
+                return params.length > 0 ? method.getName() + "?" + stringBuilder : method.getName();
+            }
+        };
+        return keyGenerator;
+    }
+
 
     /**
      * redisTemplate相关配置
