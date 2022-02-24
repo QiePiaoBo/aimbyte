@@ -30,14 +30,13 @@ public class RedisConfiguration extends CachingConfigurerSupport {
 
     @Bean
     public CacheManager myCacheManager(RedisConnectionFactory redisConnectionFactory){
-        RedisCacheManager cacheManager = RedisCacheManager.create(redisConnectionFactory);
 
-        return cacheManager;
+        return RedisCacheManager.create(redisConnectionFactory);
     }
 
     @Bean
     public KeyGenerator myKeyGenerator(){
-        KeyGenerator keyGenerator = new KeyGenerator() {
+        return new KeyGenerator() {
             @Override
             public Object generate(Object target, Method method, Object... params) {
                 StringBuilder stringBuilder = new StringBuilder();
@@ -51,7 +50,6 @@ public class RedisConfiguration extends CachingConfigurerSupport {
                 return params.length > 0 ? method.getName() + "?" + stringBuilder : method.getName();
             }
         };
-        return keyGenerator;
     }
 
 

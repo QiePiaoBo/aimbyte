@@ -8,19 +8,19 @@ server:
 
 spring:
   application:
-    name: learn-mybatis
+    name: learn-spring
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://logicer.top:3306/ds_test?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&serverTimezone=UTC
     username: root
-    password: 1997o4
+    password: mylog
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       max-active: 20
   redis:
-    host: 8.131.90.159
+    host: logicer.top
     database: 0
-    password: mylog
+    password:
     port: 6379
     timeout: 0
   aop:

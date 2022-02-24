@@ -26,6 +26,10 @@ public class AimRes implements Serializable {
         return new AimRes("0000", "OK", "");
     }
 
+    public static AimRes success(Object data){
+        return new AimRes("0000", "OK", data);
+    }
+
     public static AimRes fail(){
         return new AimRes("9999", "Failed", "");
     }

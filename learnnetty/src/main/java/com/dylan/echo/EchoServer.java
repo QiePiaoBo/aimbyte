@@ -1,5 +1,6 @@
 package com.dylan.echo;
 
+import com.dylan.NettyLearnEnum;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -19,7 +20,7 @@ import io.netty.handler.ssl.util.SelfSignedCertificate;
 public class EchoServer {
 
     static final boolean SSL = System.getProperty("ssl") != null;
-    static final int PORT = Integer.parseInt(System.getProperty("port", "8007"));
+    static final int PORT = NettyLearnEnum.ECHO.getPort();
 
     public static void main(String[] args) throws Exception {
         final SslContext sslCtx;

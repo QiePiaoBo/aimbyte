@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.Map;
 
 /**
@@ -14,10 +15,10 @@ import java.util.Map;
  * @Function :
  */
 @RestController
-@RequestMapping("ymltest")
+@RequestMapping("ymlTest")
 public class YamlController {
 
-    @Autowired
+    @Resource
     private YamlPropertyConfiguration yamlPropertyConfiguration;
 
 

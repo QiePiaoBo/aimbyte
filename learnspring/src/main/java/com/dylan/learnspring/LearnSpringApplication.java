@@ -1,5 +1,6 @@
 package com.dylan.learnspring;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
@@ -13,6 +14,7 @@ import javax.sql.DataSource;
  * @Description :
  * @Function :
  */
+@Slf4j
 @SpringBootApplication
 @ServletComponentScan
 public class LearnSpringApplication {
@@ -22,7 +24,7 @@ public class LearnSpringApplication {
         // 打印一句话到控制台，标志着Springboot程序启动成功
         DataSource dataSource =(DataSource) run.getBeanFactory().getBean("dataSource");
 
-        System.out.println(dataSource.getClass());
-        System.out.println("LearnSpringApplication started.");
+        log.info(dataSource.getClass().getName());
+        log.info("LearnSpringApplication started.");
     }
 }

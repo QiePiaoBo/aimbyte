@@ -1,6 +1,6 @@
 package com.dylan.dychat.server;
 
-import com.dylan.mynetty.dychat.utils.PrintUtil;
+import com.dylan.dychat.utils.PrintUtil;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 

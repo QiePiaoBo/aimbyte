@@ -6,7 +6,7 @@ package com.dylan.learnspring.config;
  * @Description :
  * @Function :
  */
-public class RedisCommonProperties {
+public class RedisConstant {
 
     public static final String ChannelName = "RedisPublishTestChannel";
 

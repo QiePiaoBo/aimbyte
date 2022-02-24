@@ -1,6 +1,6 @@
 package com.dylan.learnspring.service.redis;
 
-import com.dylan.learnspring.config.RedisCommonProperties;
+import com.dylan.learnspring.config.RedisConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
@@ -219,7 +219,7 @@ public class RedisService {
      * @return
      */
     public String doPublish(String message){
-        redisTemplate.convertAndSend(RedisCommonProperties.ChannelName, message);
+        redisTemplate.convertAndSend(RedisConstant.ChannelName, message);
         return "publish ok";
     }
 }

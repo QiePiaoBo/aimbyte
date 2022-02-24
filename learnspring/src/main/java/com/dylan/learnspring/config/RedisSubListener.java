@@ -46,7 +46,7 @@ public class RedisSubListener implements MessageListener {
         String channel = (String) redisTemplate.getValueSerializer().deserialize(message.getChannel());
         logger.info("Message String : " + msgString);
         logger.info("Channel of message : " + channel);
-        if (null != channel && channel.contains(RedisCommonProperties.ChannelName)){
+        if (null != channel && channel.contains(RedisConstant.ChannelName)){
             logger.info("I can see the message : " + msgString);
         }
     }
@@ -61,7 +61,7 @@ public class RedisSubListener implements MessageListener {
     public RedisMessageListenerContainer container(RedisConnectionFactory factory, MessageListener redisSubListener){
         RedisMessageListenerContainer container = new RedisMessageListenerContainer();
         container.setConnectionFactory(factory);
-        container.addMessageListener(redisSubListener, new PatternTopic(RedisCommonProperties.ChannelName));
+        container.addMessageListener(redisSubListener, new PatternTopic(RedisConstant.ChannelName));
         return container;
     }
 

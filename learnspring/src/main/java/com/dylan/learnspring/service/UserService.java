@@ -1,16 +1,13 @@
 package com.dylan.learnspring.service;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.dylan.learnspring.mapper.UserMapper;
 import com.dylan.learnspring.model.dto.UserDto;
 import com.dylan.learnspring.model.vo.AimRes;
-import com.dylan.learnspring.model.vo.UserVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import javax.annotation.Resource;
 
 /**
  * @author Dylan
@@ -22,14 +19,11 @@ import java.util.List;
 public class UserService {
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 
-    @Autowired
+    @Resource
     UserMapper userMapper;
 
     public AimRes getUsers(){
-        QueryWrapper<UserVo> queryWrapper = new QueryWrapper<>();
-
-        List<UserVo> users = userMapper.getUsers();
-        return new AimRes("0000", "Ok", users);
+        return new AimRes("0000", "Ok", userMapper.getUsers());
     }
 
     public AimRes getUserByName(String userName){
@@ -37,7 +31,6 @@ public class UserService {
     }
 
     public AimRes updateUserByUserDto(UserDto userDto){
-
         return new AimRes("0000", "Ok", userMapper.updateUserByUserDto(userDto));
     }
 }

@@ -1,6 +1,7 @@
 package com.dylan.dychat;
 
-import com.dylan.mynetty.dychat.server.DyChatServerHandler;
+import com.dylan.NettyLearnEnum;
+import com.dylan.dychat.server.DyChatServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
@@ -17,18 +18,15 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
  */
 public class DyChatServer {
 
-    static final boolean SSL = System.getProperty("ssl") != null;
-    static final int port = Integer.parseInt(System.getProperty("port", "8007"));
+    static final int port =  NettyLearnEnum.DY_CHAT.getPort();
 
     public static void main(String[] args) {
         startDyChatServer();
     }
 
     private static void startDyChatServer(){
-
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);
         EventLoopGroup workerGroup = new NioEventLoopGroup();
-
         try {
             ServerBootstrap bootstrap = new ServerBootstrap();
             bootstrap.group(bossGroup, workerGroup)
@@ -49,9 +47,5 @@ public class DyChatServer {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
         }
-
-
     }
-
-
 }
